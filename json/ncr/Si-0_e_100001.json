@@ -1,0 +1,22 @@
+{
+    "dataset_id": "100001",
+    "bib_id": "m012345",
+    "experimentalConditionId": "e012345",
+    "dataset_type": "experiment",
+    "target": {
+        "element": "Si",
+        "mass": 0,
+        "isomer": 0
+    },
+    "observable": {
+        "type": "lifetime",
+        "unit": "ns",
+        "value": 810,
+        "uncertainty": {
+            "statistical": {
+                "type": "absolute",
+                "value": 10
+            }
+        }
+    }
+}
