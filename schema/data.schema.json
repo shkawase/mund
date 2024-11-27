@@ -1,0 +1,55 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Data Schema",
+    "description": "Schema for data entries in muon nuclear data",
+    "type": "object",
+    "properties": {
+        "datasetId": {
+            "type": "string",
+            "description": "unique identifier for data entry"
+        },
+        "bibId": {
+            "type": "string",
+            "description": "unique identifier for reference bibliography"
+        },
+        "datasetType": {
+            "enum": [
+                "experiment",
+                "theory",
+                "evaluation"
+            ],
+            "description": ""
+        },
+        "nuclide": {
+            "$ref": "nuclide.schema.json"
+        },
+        "observable": {
+            "$ref": "observable.schema.json"
+        },
+        "experimentalConditionId": {
+            "type": "string"
+        }
+    },
+    "required": [
+        "datasetId",
+        "bibId",
+        "datasetType",
+        "nuclide",
+        "observable"
+    ],
+    "allOf": [
+        {
+            "if": {
+                "properties": {
+                    "datasetType": {
+                        "const": "experiment"
+                    }
+                }
+            },
+            "then": {
+                "required": ["experimentalConditionId"]
+            }
+        }
+    ]
+}
+

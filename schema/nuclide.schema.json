@@ -1,0 +1,26 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Nuclide Schema",
+    "description": "Schema for nuclide",
+    "type": "object",
+    "properties": {
+        "element": {
+            "$ref": "element.schema.json"
+        },
+        "mass": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 300,
+            "$comment": "0 indicates data about the target with natural abundance"
+        },
+        "isomer": {
+            "type": "integer",
+            "minimum": 0
+        }
+    },
+    "required": [
+        "element",
+        "mass",
+        "isomer"
+    ]
+}

@@ -1,0 +1,26 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Observable Schema",
+    "description": "Schema for observables",
+    "properties": {
+        "type": {
+            "enum": [
+                "lifetime", "hoge"
+            ]
+        }
+    },
+    "allOf": [
+        {
+            "if": {
+                "properties": {
+                    "type": {
+                        "const": "lifetime"
+                    }
+                }
+            },
+            "then": {
+                "$ref": "lifetime.schema.json"
+            }
+        }
+    ]
+}

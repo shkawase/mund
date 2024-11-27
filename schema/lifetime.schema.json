@@ -1,0 +1,41 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "title": "Lifetime Schema",
+    "description": "Schema for lifetimes",
+    "properties": {
+        "type": {
+            "const": "lifetime"
+        },
+        "unit": {
+            "enum": [
+                "Gy",
+                "My",
+                "ky",
+                "y",
+                "d",
+                "h",
+                "m",
+                "s",
+                "ms",
+                "us",
+                "ns",
+                "ps",
+                "fs",
+                "as",
+                "zs"
+            ]
+        },
+        "value": {
+            "type": "number",
+            "exclusiveMinimum": 0
+        },
+        "uncertainties": {
+            "type": "array",
+            "items": {
+                "$ref": "uncertainty.schema.json"
+            }
+        }
+    },
+    "required": ["unit","value","uncertainties"],
+    "additionalProperties": false
+}
