@@ -29,6 +29,10 @@
             ],
             "default": "us"
         },
+        "huffFactor": {
+            "type": ["number", "null"],
+            "$comment": "Huff factor used to derive lifetime from capture rate."
+        },
         "uncertainties": {
             "type": "array",
             "items": {

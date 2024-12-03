@@ -1,6 +1,7 @@
 {
     "datasetId": "100001",
     "bibId": "m012345",
+    "comment": "",
     "datasetType": "experiment",
     "nuclide": {
         "element": "Si",
