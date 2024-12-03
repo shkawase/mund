@@ -1,10 +1,13 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "lifetime.schema.json",
     "title": "Lifetime Schema",
     "description": "Schema for lifetimes",
+    "type": "object",
     "properties": {
-        "type": {
-            "const": "lifetime"
+        "value": {
+            "type": "number",
+            "exclusiveMinimum": 0
         },
         "unit": {
             "enum": [
@@ -23,11 +26,8 @@
                 "fs",
                 "as",
                 "zs"
-            ]
-        },
-        "value": {
-            "type": "number",
-            "exclusiveMinimum": 0
+            ],
+            "default": "us"
         },
         "uncertainties": {
             "type": "array",

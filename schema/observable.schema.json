@@ -1,25 +1,51 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "Observable Schema",
+    "$id": "observable.schema.json",
+    "title": "Observable",
     "description": "Schema for observables",
+    "type": "object",
     "properties": {
-        "type": {
+        "kind": {
             "enum": [
-                "lifetime", "hoge"
-            ]
+                "lifetime", "branching_ratio"
+            ],
+            "default": "lifetime"
         }
     },
     "allOf": [
         {
             "if": {
                 "properties": {
-                    "type": {
+                    "kind": {
                         "const": "lifetime"
                     }
                 }
             },
             "then": {
-                "$ref": "lifetime.schema.json"
+                "properties": {
+                    "lifetime": {
+                        "$ref": "lifetime.schema.json"
+                    }
+                }
+            }
+        },
+        {
+            "if": {
+                "properties": {
+                    "kind": {
+                        "const": "branching_ratio"
+                    }
+                }
+            },
+            "then": {
+                "properties": {
+                    "branching_ratio": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "branching_ratio.schema.json"
+                        }
+                    }
+                }
             }
         }
     ]

@@ -1,0 +1,23 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "branching_ratio.schema.json",
+    "title": "Branching Ratio Schema",
+    "description": "Schema for Branching Ratio",
+    "properties": {
+        "daughter": {
+            "$ref": "nuclide.schema.json"
+        },
+        "value": {
+            "type": "number",
+            "exclusiveMinimum": 0
+        },
+        "uncertainties": {
+            "type": "array",
+            "items": {
+                "$ref": "uncertainty.schema.json"
+            }
+        }
+    },
+    "required": ["daughter","value","uncertainties"],
+    "additionalProperties": false
+}

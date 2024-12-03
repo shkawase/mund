@@ -1,6 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "Data Schema",
+    "$id": "data.schema.json",
+    "title": "μND Data Entry",
     "description": "Schema for data entries in muon nuclear data",
     "type": "object",
     "properties": {
@@ -18,10 +19,11 @@
                 "theory",
                 "evaluation"
             ],
+            "default": "experiment",
             "description": ""
         },
         "nuclide": {
-            "$ref": "nuclide.schema.json"
+            "$ref": "./nuclide.schema.json"
         },
         "observable": {
             "$ref": "observable.schema.json"

@@ -10,73 +10,49 @@
                 "statistical",
                 "systematic",
                 "other"
-            ]
+            ],
+            "default": "total"
         },
         "description": {
             "type": "string"
         },
         "value": {
-            "type": [
-                "number",
-                "string"
+            "oneOf": [
+                {
+                    "type": "number",
+                    "title": "symmetric",
+                    "minimum": 0,
+                    "default": 0
+                },
+                {
+                    "type": "string",
+                    "title": "asymmetric",
+                    "pattern": "^(?:\\+(\\d+\\.?\\d*|\\.\\d+)-(\\d+\\.?\\d*|\\.\\d+))$",
+                    "default": "+0-0"
+                },
+                {
+                    "type": "string",
+                    "title": "relative",
+                    "pattern": "^(?:\\d+\\.?\\d*|\\.\\d+)%$"
+                },
+                {
+                    "type": "string",
+                    "title": "limits",
+                    "enum": ["<","<=",">",">="]
+                },
+                {
+                    "title": "approximation",
+                    "enum": ["~"],
+                    "default": "~"
+                },
+                {
+                    "title": "unreported",
+                    "enum": ["x"],
+                    "default": "~"
+                }
             ]
         }
     },
-    "allOf": [
-        {
-            "if": {
-                "properties": {
-                    "value": {
-                        "type": "number"
-                    }
-                }
-            },
-            "then": {
-                "properties": {
-                    "value": {
-                        "minimum": 0
-                    }
-                }
-            }
-        },
-        {
-            "if": {
-                "properties": {
-                    "value": {
-                        "type": "string"
-                    }
-                }
-            },
-            "then": {
-                "properties": {
-                    "value": {
-                        "anyOf": [
-                            {
-                                "description": "asymmetric",
-                                "pattern": "^(?:\\+(\\d+\\.?\\d*|\\.\\d+)-(\\d+\\.?\\d*|\\.\\d+))$"
-                            },
-                            {
-                                "description": "relative",
-                                "pattern": "^(?:\\d+\\.?\\d*|\\.\\d+)%$"
-                            },
-                            {
-                                "description": "limits",
-                                "pattern": "^<|<=|>|>=$"
-                            },
-                            {
-                                "description": "approximation",
-                                "pattern": "~"
-                            },
-                            {
-                                "description": "unreported",
-                                "pattern": "x"
-                            }
-                        ]
-                    }
-                }
-            }
-        }
-    ],
     "required": [
         "source",
         "value"

@@ -11,11 +11,13 @@
             "type": "integer",
             "minimum": 0,
             "maximum": 300,
+            "default": 0,
             "$comment": "0 indicates data about the target with natural abundance"
         },
         "isomer": {
             "type": "integer",
-            "minimum": 0
+            "minimum": 0,
+            "default": 0
         }
     },
     "required": [
