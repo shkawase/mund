@@ -48,7 +48,7 @@ def generate_ncr(
     except Exception as e:
         print("Validation failed:", e)
     else:
-        return json.dumps(entry, indent=2)
+        return entry
 
 
 if __name__ == "__main__":

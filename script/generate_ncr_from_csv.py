@@ -8,9 +8,10 @@ from helper import element_helper
 
 
 def generate_ncr_from_csv(csvfilepath: str, options):
+    json_out = []
     with open(csvfilepath) as csvfile:
         reader = csv.DictReader(csvfile)
-        for row in reader:
+        for i, row in enumerate(reader):
             row.pop("")
             if "Z" in row:
                 row["element"] = element_helper(int(row.pop("Z")))
@@ -18,8 +19,10 @@ def generate_ncr_from_csv(csvfilepath: str, options):
             row["isomer"] = int(row["isomer"])
             row["lifetime"] = float(row["lifetime"])
             row["uncertainty"] = float(row["uncertainty"])
-            print(generate_ncr(**(options | row)))
-            break
+            json_row = generate_ncr(**(options | row))
+            json_row["datasetId"] += f"/{i}"
+            json_out.append(json_row)
+    return json_out
 
 
 if __name__ == "__main__":
@@ -83,4 +86,6 @@ if __name__ == "__main__":
     )
 
     options = vars(parser.parse_args())
-    generate_ncr_from_csv(options.pop("input_csv"), options)
+    print(
+        json.dumps(generate_ncr_from_csv(options.pop("input_csv"), options), indent=2)
+    )
